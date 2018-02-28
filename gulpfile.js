@@ -17,6 +17,19 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
+var header = require('gulp-header');
+var pkg = require('./package.json');
+
+var banner = ['/*!',
+    ' * <%= pkg.name %> (http://javatmp.com)',
+    ' * <%= pkg.description %>',
+    ' *',
+    ' * @version <%= pkg.version %>',
+    ' * @link <%= pkg.homepage %>',
+    ' * @copyright 2018 JavaTMP',
+    ' * @license <%= pkg.license %>',
+    ' */',
+    ''].join('\n');
 
 
 gulp.task('clean', function () {
@@ -33,6 +46,7 @@ gulp.task('sass', ["clean"], function () {
                 cascade: false
             }))
             .pipe(cleanCSS())
+            .pipe(header(banner, {pkg: pkg}))
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('./dist/'));
 });
@@ -56,6 +70,7 @@ gulp.task('js', ["clean"], function (cb) {
             }))
             .pipe(eslint.format())
             .pipe(uglify({output: {comments: /^!/}}))
+            .pipe(header(banner, {pkg: pkg}))
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('./dist/'));
 });
