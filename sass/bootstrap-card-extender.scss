@@ -22,6 +22,8 @@ $card-extender-options-transition: $transition-base !default;
         right: 0!important;
         width: 100%!important;
         height: 100%!important;
+        border-radius: 0;
+        border-width: 3px;
         > .card-body {
             overflow-y: auto;
             overflow-x: hidden;
