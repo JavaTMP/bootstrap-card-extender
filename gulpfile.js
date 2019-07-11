@@ -36,7 +36,7 @@ gulp.task('clean', function () {
     return del(['./dist']);
 });
 
-gulp.task('sass', ["clean"], function () {
+gulp.task('sass', gulp.series("clean", function () {
     return gulp.src([
         './sass/bootstrap-card-extender.scss'
     ])
@@ -49,9 +49,9 @@ gulp.task('sass', ["clean"], function () {
             .pipe(header(banner, {pkg: pkg}))
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('./dist/'));
-});
+}));
 
-gulp.task('js', ["clean"], function (cb) {
+gulp.task('js', gulp.series("clean", function (cb) {
     return gulp.src('./js/bootstrap-card-extender.js')
             .pipe(eslint({
                 "env": {"browser": true, "node": true, "jquery": true},
@@ -73,8 +73,8 @@ gulp.task('js', ["clean"], function (cb) {
             .pipe(header(banner, {pkg: pkg}))
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('./dist/'));
-});
+}));
 
-gulp.task('default', ["sass", "js"], function () {
+gulp.task('default', gulp.series("sass", "js", function () {
     // place code for your default task here
-});
+}));
