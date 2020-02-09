@@ -165,7 +165,7 @@ $('body').on('click', '.card > .card-header a.fullscreen', function (e) {
 ### Moving Bootstrap Card Option
 We extended native Bootstrap Card by supporting moving and resorting cards inside .col div that help to implements a kind of Kanban Board or Agile's scrum backlogs. We used jQueryUI Sortable Pluin but we include complete jQueryUI library instead of only sortable plugin. 
 
-The following demo page show the implementation of Bootstrap card resorting in separate page: [Sortable Cards using JqueryUI sortable Plugin JavaTMP Demo Page](http://demo.javatmp.com/JavaTMP-Static-Ajax/#pages/custom-components/sortable-cards.html "Sortable Cards using JqueryUI sortable Plugin JavaTMP Demo Page").
+The following demo page show the implementation of Bootstrap card resorting in separate page: [Sortable Cards using JqueryUI sortable Plugin JavaTMP Demo Page](http://java.javatmp.com/#/pages/static/custom-components/sortable-cards "Sortable Cards using JqueryUI sortable Plugin JavaTMP Demo Page").
 
 Normally this feature is not required by most projects and because jQueryUI is not naturally intended to be in a Bootstrap Template we implemented it in the same above demo page. So, kindly see the above demo page HTML source code for more details.
 
